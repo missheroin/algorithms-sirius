@@ -19,25 +19,30 @@
 
 class StackMaxEffective:
     def __init__(self):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        self.stack = []
+        self.stack_new = []
+        self._max = -10000
 
     def push(self, item):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
-        
+       self.stack.append(int(item))
+
 
     def pop(self):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        if len(self.stack) == 0:
+            self.stack_new.append('error')
+        else:
+            rel = self.stack.pop()
 
     def get_max(self):
-        # Your code
-        #  “ヽ(´▽｀)ノ”
-        pass
+        if len(self.stack) == 0:
+            self.stack_new.append(None)
+        else:
+            for i in range(len(self.stack)):
+                if int(self.stack[i]) > int(self._max):
+                    self._max = self.stack[i]
+            self.stack_new.append(self._max)
+    def __get__(self):
+        return self.stack_new
 
 
 def worker(commands):
@@ -66,4 +71,4 @@ test(
 test(
     worker(['get_max', 'push -6', 'pop', 'pop', 'get_max', 'push 2', 'get_max', 'pop', 'push -2', 'push -6']),
     [None, 'error', None, 2]
-)
+) 
